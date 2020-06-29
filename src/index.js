@@ -19,67 +19,55 @@ window.onload = function () {
 
   file.onchange = function () {
     const files = this.files;
-    //list of file objects selected by user (DOM File API)
     audio.src = URL.createObjectURL(files[0]);
-    //DOMString of selected file object
 
     const name = files[0].name;
-    h3.innerText = `${name}`; // Sets <h3> to the name of the file
+    h3.innerText = `${name}`;
 
-    /////C A N V A S//////
+    //////C A N V A S//////
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const ctx = canvas.getContext("2d");
-    ///////       ////////
+    /////       ////////
 
-    //interface audio-processing graph
     const context = new AudioContext();
     let src = context.createMediaElementSource(audio);
-    //audio context -> audio source that can be played/analysed
     const analyser = context.createAnalyser();
-    //analyser for audio context
 
     src.connect(analyser);
-    //connects audio context source to analyser
     analyser.connect(context.destination);
-    //destination === speakers/headphones
 
     analyser.fftSize = 8192;
-    //FFT is an algo that samples a signal over a period of time and divides it into it's frequency components. it seperates the mixed signals and shows the violent vibration of a frequency. lower size = less bars
 
     const bufferLength = analyser.frequencyBinCount;
-    //equals number of data values you have for visualizations
 
     const dataArray = new Uint8Array(bufferLength);
-    //converts 8-bit unsigned interger array
 
     const WIDTH = canvas.width;
     const HEIGHT = canvas.height;
 
-    ///BARZZZ
-    const barWidth = (WIDTH / bufferLength) * 13;
-    let barHeight;
-    let x = 0;
-    /////////////////////
+    // ///BARZZZ
+    // const barWidth = (WIDTH / bufferLength) * 13;
+    // let barHeight;
+    // let x = 0;
+    // /////////////////////
 
     function renderFrame() {
       requestAnimationFrame(renderFrame); 
-      //callback func to invoke before rendering
 
-      ///BARZZZZ
-      x = 0;
-      ///
+      // ///BARZZZZ
+      // x = 0;
+      // ///
 
       analyser.getByteFrequencyData(dataArray);
-       //frequency data -> dataArray
 
       ctx.fillStyle = "rgba(0,0,0,1)"; 
-      // clears canvas with opacity 0.2
       ctx.fillRect(0, 0, WIDTH, HEIGHT); 
-      // fade effect
 
+    
       ///////////////////////////////////////
-      //WAVEZZZZ set line width and stroke color for wave drawn, then begin path
+      ///////////////////////////////////////
+      // WAVEZZZZ
       ctx.lineWidth = 2;
       ctx.strokeStyle = "rgb(57, 255, 20)";
       ctx.beginPath();
@@ -102,10 +90,10 @@ window.onload = function () {
 
       ctx.lineTo(canvas.width, canvas.height / 2);
       ctx.stroke();
-      ///////////////////////////////////////
+      // ///////////////////////////////////////
 
 
-      // /////BARZZZZ/////////
+      // // /////BARZZZZ/////////
       // let r, g, b;
       // let bars = 200; // Set total number of bars you want per frame
 
@@ -149,10 +137,14 @@ window.onload = function () {
       //   x += barWidth + 5; // Gives 10px space between each bar
       //   ///////////////////////////////////////
       // }
-      //   ///////////////////////////////////////
+      // //   ///////////////////////////////////////
     }
+
 
     audio.play();
     renderFrame();
-  };;;
-};
+  };
+}
+
+
+
