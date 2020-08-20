@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <title>ambiance catcher</title>
-    
+
     <!-- user's visible area of webpage -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./src/index.js"></script>
-    
 
     <!-- textsssss -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- stylesheets -->
-    <link href="src/styles/index.scss" rel="stylesheet" type="text/css">
+    <link href="src/styles/index.scss" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
@@ -25,13 +26,22 @@
     <div class="app-container">
       <h1>ambiance catcher</h1>
 
-
-      <input type="file" id="file-input" accept="audio/*" for="file" name="file" />
+      <input
+        type="file"
+        id="file-input"
+        accept="audio/*"
+        for="file"
+        name="file"
+      />
       <audio id="audio" controls></audio>
       <h3 id="name"></h3>
       <canvas id="canvas" class="canvas"></canvas>
-      <!-- circles -->
+      <ul id="visual-options-ul">
+        <li>barz</li>
+        <li>circles</li>
+      </ul>
 
+      <!-- circles -->
 
       <div class="navbar">
         <a href="">About</a>
@@ -39,14 +49,8 @@
         <a href="">LinkedIn</a>
         <a href="">Contact</a>
       </div>
-
-
-
     </div>
 
-
-    
     <script src="./dist/main.js"></script>
   </body>
-
 </html>

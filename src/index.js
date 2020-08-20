@@ -18,6 +18,7 @@ window.onload = function () {
   const audio = document.getElementById("audio");
 
   file.onchange = function () {
+    const visualSelection = document.getElementById("");
     const files = this.files;
     audio.src = URL.createObjectURL(files[0]);
 
@@ -47,104 +48,97 @@ window.onload = function () {
     const HEIGHT = canvas.height;
 
     // ///BARZZZ
-    // const barWidth = (WIDTH / bufferLength) * 13;
-    // let barHeight;
-    // let x = 0;
+    const barWidth = (WIDTH / bufferLength) * 13;
+    let barHeight;
+    let x = 0;
     // /////////////////////
 
     function renderFrame() {
-      requestAnimationFrame(renderFrame); 
+      requestAnimationFrame(renderFrame);
 
       // ///BARZZZZ
-      // x = 0;
+      x = 0;
       // ///
 
       analyser.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = "rgba(0,0,0,1)"; 
-      ctx.fillRect(0, 0, WIDTH, HEIGHT); 
+      ctx.fillStyle = "rgba(0,0,0,1)";
+      ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-    
       ///////////////////////////////////////
       ///////////////////////////////////////
       // WAVEZZZZ
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = "rgb(57, 255, 20)";
-      ctx.beginPath();
+      // ctx.lineWidth = 2;
+      // ctx.strokeStyle = "rgb(57, 255, 20)";
+      // ctx.beginPath();
 
-      let sliceWidth = (WIDTH * 3.0) / bufferLength;
-      let x = 0;
+      // let sliceWidth = (WIDTH * 3.0) / bufferLength;
+      // let x = 0;
 
-      for (let i = 0; i < bufferLength; i++) {
-        let v = dataArray[i] / 128.0;
-        let y = (v * HEIGHT) / 2;
+      // for (let i = 0; i < bufferLength; i++) {
+      //   let v = dataArray[i] / 128.0;
+      //   let y = (v * HEIGHT) / 2;
 
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-
-        x += sliceWidth;
-      }
-
-      ctx.lineTo(canvas.width, canvas.height / 2);
-      ctx.stroke();
-      // ///////////////////////////////////////
-
-
-      // // /////BARZZZZ/////////
-      // let r, g, b;
-      // let bars = 200; // Set total number of bars you want per frame
-
-      // for (let i = 0; i < bars; i++) {
-      //   barHeight = (dataArray[i] * 2.5);
-
-      //   if (dataArray[i] > 210) {
-      //     // pink
-      //     r = 255;
-      //     g = 110;
-      //     b = 199;
-      //   } else if (dataArray[i] > 200) {
-      //     // yellow
-      //     r = 250;
-      //     g = 237;
-      //     b = 39;
-      //   } else if (dataArray[i] > 190) {
-      //     // green
-      //     r = 57;
-      //     g = 255;
-      //     b = 20;
-      //   } else if (dataArray[i] > 180) {
-      //     // purple
-      //     r = 188;
-      //     g = 19;
-      //     b = 254;
-
+      //   if (i === 0) {
+      //     ctx.moveTo(x, y);
       //   } else {
-      //     // blue
-      //     r = 0;
-      //     g = 249;
-      //     b = 255;
+      //     ctx.lineTo(x, y);
       //   }
 
-      //   ctx.fillStyle = `rgb(${r},${g},${b})`;
-      //   ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-      //   // (x, y, i, j)
-      //   // (x, y) Represents start point
-      //   // (i, j) Represents end point
-
-      //   x += barWidth + 5; // Gives 10px space between each bar
-      //   ///////////////////////////////////////
+      //   x += sliceWidth;
       // }
+
+      // ctx.lineTo(canvas.width, canvas.height / 2);
+      // ctx.stroke();
+      // ///////////////////////////////////////
+
+      // // /////BARZZZZ/////////
+      let r, g, b;
+      let bars = 200; // Set total number of bars you want per frame
+
+      for (let i = 0; i < bars; i++) {
+        barHeight = dataArray[i] * 2.5;
+
+        if (dataArray[i] > 210) {
+          // pink
+          r = 255;
+          g = 110;
+          b = 199;
+        } else if (dataArray[i] > 200) {
+          // yellow
+          r = 250;
+          g = 237;
+          b = 39;
+        } else if (dataArray[i] > 190) {
+          // green
+          r = 57;
+          g = 255;
+          b = 20;
+        } else if (dataArray[i] > 180) {
+          // purple
+          r = 188;
+          g = 19;
+          b = 254;
+        } else {
+          // blue
+          r = 0;
+          g = 249;
+          b = 255;
+        }
+
+        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+        // (x, y, i, j)
+        // (x, y) Represents start point
+        // (i, j) Represents end point
+
+        x += barWidth + 5; // Gives 10px space between each bar
+        ///////////////////////////////////////
+      }
       // //   ///////////////////////////////////////
     }
-
 
     audio.play();
     renderFrame();
   };
-}
-
-
-
+};
