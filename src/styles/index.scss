@@ -1,42 +1,39 @@
-
 html {
-  height: 100%;
-  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  margin: 0px;
 }
-
 
 body {
   background-color: white;
+  height: 100vh;
+  width: 100vw;
+  margin: 0%;
 }
 
 canvas {
-  display: block;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: row;
+  border: 5px solid orange;
+  width: 99vw;
+  height: 50vh;
 }
 
 audio {
-  position: fixed;
-  left: 200px;
-  top: 10px;
-  width: 40%;
+  left: 100px;
+  top: 100px;
+  width: 200px;
   z-index: 3;
 }
 
-
-@keyframes bg {
-  0%{ background-position: 0 0; }
-  100%{ background-position: 8px 8px; }
-}
-
-
 #file-input {
-  position: fixed;
-  top: 10px;
-  left: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  width: 130px;
   z-index: 3;
 }
 
@@ -48,21 +45,13 @@ audio {
 }
 
 #file-input::before {
-  content: 'Select a Song';
-  display: flex;
-  align-self: center;
-  align-content: center;
-  /* margin-left: 80px; */
-  /* width: 140px; */
+  content: "Select a Song";
   width: 100px;
   margin-top: 10px;
   margin-bottom: 0px;
   margin-left: 10px;
   padding-top: 14px;
   padding-bottom: 14px;
-  /* padding-right: 34px;
-  /* padding-left: 34px; */
-  /* padding: 20px 20px; */
   padding-left: 10px;
   border-radius: 10px;
   border: 0;
@@ -79,12 +68,20 @@ audio {
 }
 
 #name {
-  position: absolute;
-  top: 0;
-  right: 20px;
+  position: relative;
+  display: flex;
   z-index: 3;
-  color: #eeeeee;
-  font-family: monospace;
+  color: black;
+  margin-left: 10px;
+}
+
+@keyframes bg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 8px 8px;
+  }
 }
 
 .welcome-message {
@@ -93,37 +90,83 @@ audio {
 }
 
 .app-container {
-  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.app-container h1 {
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-  font-size: 50px;
-  margin: 0;
-  color: white;
-  text-shadow: 0 0 10px rgba(0,0,0,0.3) ;
+.app-header {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100px;
+  top: 0;
+  border: solid 5px purple;
+}
+
+.app-header p {
+  display: flex;
+  flex-direction: column;
+}
+
+.audio-input-container {
+  display: flex;
+  flex-direction: row;
+  border: solid 5px red;
+  width: 40vw;
+  height: 10vh;
+}
+
+.audio-input-container h5 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+/* .audio-input-container ul {
+  align-items: center;
+} */
+
+/* .ambiance-options-container {
+  display: flex;
+  flex-basis: 0;
+  flex-direction: row;
+  border: solid 5px red;
+  width: 45vw;
+} */
+
+.visuals-container {
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  border: solid 5px yellow;
+}
+
+.canvas-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
 }
 
 .navbar {
-  background-color: #5f79af;
+  background-color: yellowgreen;
   overflow: hidden;
+  margin: 15px;
   position: fixed;
-  bottom: 15px;
+  bottom: 0px;
   left: 300px;
-  width: 280px;
+  width: 600px;
   height: 25px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   flex-direction: row;
-
 }
 
 .navbar a {
   float: left;
   padding: 10px;
+  margin: 40px;
   text-decoration: none;
   font-size: 15px;
   color: white;
