@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let barHeight;
         let x = 0;
         let r, g, b;
-        let bars = 200; // Set total number of bars you want per frame
+        let bars = 200;
 
         // const barFftSizes = [256, 512, 2048, 4096, 8192];
         const barFftSizes = [2048];
@@ -139,13 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
           ctx.fillStyle = `rgb(${r},${g},${b})`;
           ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-          // (x, y, i, j)
-          // (x, y) Represents start point
-          // (i, j) Represents end point
 
-          x += barWidth + 10; // Gives 10px space between each bar
+          x += barWidth + 10;
         }
-        console.log("sucka AND BARVISUAL", analyser.fftSize);
+        console.log("dis is BARVISUAL", analyser.fftSize);
         ////
       } else if (visual === "waveVisual") {
         const waveFftSizes = [1024];
@@ -181,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.lineTo(WIDTH, HEIGHT / 2);
         ctx.stroke();
-        console.log("not a sucka AND WAVEVISUAL");
+        console.log("WAVEVISUALLLL");
 
         /////
       } else if (visual === "circleVisual") {
@@ -203,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // ctx.lineWidth = 0;
           ctx.lineWidth =
             dataArray[Math.floor(Math.random() * dataArray.length)];
-          // ctx.strokeStyle = "#09f";
+
           ctx.strokeStyle =
             "rgb(" +
             "75," +
@@ -227,16 +224,10 @@ document.addEventListener("DOMContentLoaded", () => {
           render();
 
           function render() {
-            // clear semi-transparent
             // ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-            // fill dataArray buffer
             analyser.getByteFrequencyData(dataArray);
-
-            // average data from some bands
             let v = (dataArray[1] + dataArray[2]) / 512;
 
-            // draw arc using interpolated range with exp. of v
             ctx.beginPath();
             ctx.arc(
               cx,
@@ -247,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
             ctx.closePath();
             ctx.stroke();
-            // feedback effect
             ctx.drawImage(canvas, -8, -8, WIDTH + 16, HEIGHT + 16);
 
             // requestAnimationFrame(render);
