@@ -2,15 +2,30 @@
 <html lang="en">
   <head>
     <title>ambiance catcher</title>
-
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/images/favicon-ambiancecatcher.png"
+    />
     <!-- user's visible area of webpage -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--  -->
 
     <!-- font(s) -->
+    <!-- app header font && ambiance nav-->
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Great+Vibes&family=Play:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- footer -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- button font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
       rel="stylesheet"
     />
     <!--  -->
@@ -20,16 +35,97 @@
     <link rel="stylesheet" href="./dist/main.css" />
   </head>
 
-  <body>
-    <p class="welcome-message">
-      Welcome, click anywhere to experience ambiance catcher
-    </p>
+  <div class="modal-background">
+    <div class="modal-main">
+      <h2 class="welcome-header">Welcome to AMBIANCE CATCHER!</h2>
+      <p class="welcome-warning">
+        EPILEPSY WARNING: <br />
+        VISUALIZATIONS IN THIS APP HAVE BEEN IDENTIFIED TO POTENTIALLY TRIGGER
+        SEIZURES FOR PEOPLE WITH PHOTOSENSITIVE EPILEPSY
+        <br />
+        VIEWER DISCRETION IS ADVISED
+        <br />
+      </p>
+      <p class="welcome-instructions">
+        To experience your audio visual journey: <br />
+        1. Click the "select a song" button and choose a song you want on your
+        journey
+        <br />
+        2. Click the "set the ambiance" button
+        <br />
+        3. Press play to start your journey If you have any questions, click on
+        the "?" button
+        <!-- <img
+          src="/assets/images/question.svg"
+          alt="Question Icon"
+          height="30"
+          style="background-color: white"
+        /> -->
+        located at the top right hand corner <br />
+        — Click to experience Ambiance Catcher —
+      </p>
+    </div>
+  </div>
 
-    <div class="navbar">
-      <a href="#">About</a>
-      <a href="#">Github</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Contact</a>
+  <body>
+    <div class="app-container">
+      <div class="app-header">
+        <h1>AMBIANCE CATCHER</h1>
+      </div>
+
+      <div class="ambiance-nav">
+        <h5>start your journey...</h5>
+
+        <input
+          type="file"
+          id="file-input"
+          accept="audio/*"
+          for="file"
+          name="file"
+        />
+
+        <button id="visual-button" type="button">set the ambiance</button>
+        <audio id="audio" controls></audio>
+
+        <a href="#" id="question-icon">
+          <img
+            id="question-icon"
+            src="/assets/images/question.svg"
+            alt="Question Icon"
+            height="40"
+          />
+        </a>
+      </div>
+
+      <h3 id="name"></h3>
+
+      <canvas id="canvas" class="canvas"></canvas>
+
+      <footer class="footer">
+        <div class="footer-copyright">AMBIANCE CATCHER © 2020</div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/glhkang/" target="_blank"
+            ><img
+              src="/assets/images/linkedin.png"
+              alt="Gloria's LinkedIn Link"
+              height="21"
+          /></a>
+          <a href="https://github.com/glhkang" target="_blank">
+            <img
+              src="/assets/images/github.png"
+              alt="Gloria's GitHub Link"
+              height="27"
+            />
+          </a>
+          <a href="https://glhkang.github.io/" target="_blank">
+            <img
+              src="/assets/images/gloria_kang.png"
+              alt="Gloria Kang"
+              height="22"
+            />
+          </a>
+        </div>
+      </footer>
     </div>
 
     <!-- scripts to keep -->
