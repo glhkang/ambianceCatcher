@@ -74,14 +74,14 @@ body {
 }
 
 .modal-main-fade {
-  animation-name: modal_main_fade;
+  animation-name: modal_main_fade_out;
   animation-duration: 0.9s;
   opacity: 0;
   z-index: -1;
 }
 
 .modal-bg-fade {
-  animation-name: modal_bg_fade;
+  animation-name: modal_bg_fade_out;
   animation-duration: 0.9s;
   position: fixed;
   top: 0;
@@ -110,7 +110,7 @@ body {
   }
 }
 
-@keyframes modal_main_fade {
+@keyframes modal_main_fade_out {
   from {
     opacity: 1;
   }
@@ -119,7 +119,7 @@ body {
   }
 }
 
-@keyframes modal_bg_fade {
+@keyframes modal_bg_fade_out {
   from {
     background: black;
   }
@@ -127,8 +127,6 @@ body {
     background: transparent;
   }
 }
-
-/* ///////////////////// */
 
 canvas {
   display: flex;

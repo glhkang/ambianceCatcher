@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function answerQuestion() {
     openModal();
-    console.log("hello mateYYYYYYY");
+    // console.log("hello mateYYYYYYY");
   }
   ///////////////////////////
   ///////////////////////////
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           x += barWidth + 10;
         }
-        console.log("dis is BARVISUAL", analyser.fftSize);
+        // console.log("dis is BARVISUAL", analyser.fftSize);
         ////
       } else if (visual === "waveVisual") {
         const waveFftSizes = [1024];
@@ -179,11 +179,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.lineTo(WIDTH, HEIGHT / 2);
         ctx.stroke();
-        console.log("WAVEVISUALLLL");
+        // console.log("WAVEVISUALLLL");
 
         /////
       } else if (visual === "circleVisual") {
-        console.log("ISSA CIRCLE");
+        // console.log("ISSA CIRCLE");
         /////////////////////////
         if (audio.paused) {
           ctx.fillRect(0, 0, WIDTH, HEIGHT);
