@@ -45,6 +45,7 @@ body {
   animation-name: modal_main_fade_in;
   animation-duration: 0.9s;
   /* border-radius: 20%; */
+  font-family: "Play", sans-serif;
 }
 
 .modal-main h2 {
@@ -55,35 +56,30 @@ body {
   padding: 0;
 }
 
-.modal-main p {
-  margin-bottom: 10px;
-}
-
 .welcome-warning {
   font-family: "Oswald", sans-serif;
   border: 1px solid white;
   padding: 10px;
   font-size: 15px;
-  margin: 15px 0 20px 0;
+  margin: 20px 0 0 0;
 }
 
 .welcome-instructions {
   font-family: "Montserrat", sans-serif;
-  font-size: 24px;
+  font-size: 23px;
   text-align: center;
-  margin: 15px 90px 0px 90px;
-  border: 1px dotted darkslateblue;
+  margin: 25px 90px 0px 90px;
+  border: 0.1px dotted darkslateblue;
   border-radius: 35%;
-  padding: 20px;
-  line-height: 160%;
+  padding: 35px 35px 25px 35px;
+  line-height: 165%;
 }
 
 .welcome-start {
-  font-family: "Play", sans-serif;
   text-align: center;
-  font-size: 30px;
+  font-size: 32px;
   /* margin-bottom: 0 0 20px 0; */
-  margin: 15px 0 0 0;
+  margin: 20px 0 0 0;
   padding: 0;
 }
 
