@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const visuals = ["waveVisual"];
   // const visuals = ["barVisual"];
   // const visuals = ["circleVisual"];
+
   const modalBg = document.querySelector(".modal-background");
   const modal = document.querySelector(".modal-main");
 
