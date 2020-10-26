@@ -171,6 +171,10 @@ audio::-webkit-media-controls-panel {
   background: transparent;
 }
 
+input[type="file"] {
+  color: transparent;
+}
+
 #file-input {
   display: flex;
   width: 90px;
