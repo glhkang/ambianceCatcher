@@ -1,29 +1,23 @@
-# ambianceCatcher
-ambiance catcher is an interactive audio-visualization app that "sets the ambiance" based on user input.
+# [AMBIANCE CATCHER](https://bit.ly/ambianceCatcher)
 
 ## Background and Overview
-Inspired by the cootie catcher, aka the paper fortune teller, the user chooses which custom audio-visual journey they want to go on.
+AMBIANCE CATCHER is an interactive audio-visualization app that allows users to experience a tailor-made journey based on the song of their choice.
 
-## Functionality and MVPs
-- [ ] User is able to select one of four options (tbd)
-- [ ] User is able to select one of inner four options (tbd)
-- [ ] Custom audio-visual ambiance is set based on user's choices
+## Core Functionalities
+- Allow dynamic input so that any song can be chosen by the user for their journey
+- The “set the ambiance” button chooses one of the visualizations
+- Play/pause button plays and pauses the song chosen
+- An about modal describes what Ambiance Catcher is and how to use the app
 - [ ] Bonus: butterfly effect mode
 
-## Wireframes
-![Wireframe 1](/assets/images/wireframe-1.png "Wireframe 1")
-![Wireframe 2](/assets/images/wireframe-2.png "Wireframe 2")
+## Design Structure
+AMBIANCE CATCHER's interface consists of a window for the visualization and a journey bar, located at the top right corner, where user input is requested. The user can “select a song”, “set the ambiance”, and also play/pause as well as mute the song chosen in the journey bar. The about modal can be activated by clicking the question mark on the top right corner, also located in the journey bar.
 
-## Architecture and Technology
-- Javascript
-- HTML5 Canvas
+## Architecture and Technologies
+AMBIANCE CATCHER uses the following technologies:
+- Canvas
+- Web Audio API
+- Vanilla JavaScript
 - CSS3
-- D3
+- HTML5
 
-## Implementation Timeline
-- Day 0: Set up webpack and all entry files, research all possible technologies
-- Day 1: Complete resarch, build out forms, decide on brand style and audio componenet
-- Day 2 + 3: Build out visuals to allow user to choose their journey
-- Day 4: Start out bonus feature: butteryfly effect
-- Day 5: Finish bonus feature
-# ambianceCatcher
