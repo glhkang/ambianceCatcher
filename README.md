@@ -8,10 +8,10 @@ AMBIANCE CATCHER is an interactive audio-visualization app that thats the user o
 
 ## Core Functionalities
 
-- Allow the user to choose a song of their choice (dynamic input) for their journey
+- Allows the user to choose a song of their choice (dynamic input) for their journey
 - The “set the ambiance” button randomly sets a visualization to the song
 - Play/pause button plays and pauses the chosen song
-- An "about" modal describes what Ambiance Catcher is and how to use the app
+- An "about" modal that describes what Ambiance Catcher is and how to use the app
 
 ## Design Structure
 
