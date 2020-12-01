@@ -54,17 +54,23 @@ document.addEventListener("DOMContentLoaded", () => {
     /////
     const context = new AudioContext();
     let src = context.createMediaElementSource(audio);
+    //creates analyser node, which allows you to extract data from your audio source
     const analyser = context.createAnalyser();
+    //analyser node then connects to audio source (your speakers)
     src.connect(analyser);
     analyser.connect(context.destination);
+    //returns the fft size in half
     const bufferLength = analyser.frequencyBinCount;
+    //creates an array for 8-bit unsigned integers, and the frequencyBinCount's length is how many data points that will be collected for the fft size
     const dataArray = new Uint8Array(bufferLength);
     /////
 
     function renderFrame() {
       requestAnimationFrame(renderFrame);
+      //capture the frequency data and copies it into the dataArray
       analyser.getByteFrequencyData(dataArray);
       ctx.fillStyle = "rgba(0,0,0,1)";
+      ctx.clearRect(0, 0, WIDTH, HEIGHT);
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
       const random = Math.random;
 
@@ -81,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //total number of bars per frame
         let bars = 200;
 
-        // const barFftSizes = [512, 2048, 4096];
+        // const barFftSizes = [512, 1024, 2048, 4096];
         const barFftSizes = [2048];
         analyser.fftSize =
           barFftSizes[Math.floor(Math.random() * barFftSizes.length)];
@@ -151,13 +157,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
           ctx.fillStyle = `rgb(${r},${g},${b})`;
           ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
           //spacing between bar
           x += barWidth + 10;
         }
       } else if (visual === "waveVisual") {
-        // const waveFftSizes = [1024];
-        const waveFftSizes = [1024];
+        const waveFftSizes = [2048];
         analyser.fftSize =
           waveFftSizes[Math.floor(Math.random() * waveFftSizes.length)];
         ctx.lineWidth = 2;
@@ -186,13 +190,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
           x += sliceWidth;
         }
-
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+        ctx.fillRect(0, 0, WIDTH, HEIGHT);
         ctx.lineTo(WIDTH, HEIGHT / 2);
         ctx.stroke();
       } else if (visual === "circleVisual") {
         if (audio.paused) {
+          ctx.clearRect(0, 0, WIDTH, HEIGHT);
           ctx.fillRect(0, 0, WIDTH, HEIGHT);
         } else {
+          // canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
           let cx = WIDTH * 0.5,
             cy = HEIGHT * 0.5,
             radiusMax = Math.min(cx, cy) - 20,
@@ -248,6 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       } else if (audio.pause) {
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
       }
     }
