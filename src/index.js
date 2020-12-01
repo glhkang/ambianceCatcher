@@ -1,16 +1,12 @@
 import "./styles/index.scss";
-// import "./src/styles/index.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // window.onload = function () {
   const file = document.getElementById("file-input");
   const canvas = document.getElementById("canvas");
   const h3 = document.getElementById("name");
   const audio = document.getElementById("audio");
-  const visuals = ["waveVisual", "barVisual", "circleVisual"];
-  // const visuals = ["waveVisual"];
-  // const visuals = ["barVisual"];
-  // const visuals = ["circleVisual"];
+  // const visuals = ["waveVisual", "barVisual", "circleVisual"];
+  const visuals = ["barVisual"];
 
   const modalBg = document.querySelector(".modal-background");
   const modal = document.querySelector(".modal-main");
@@ -25,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeModal() {
     modalBg.setAttribute("class", "modal-bg-fade");
     modal.setAttribute("class", "modal-main-fade");
-    // canvas.setAttribute("background-image", "url('/assets/images/stars.jpg')");
+    canvas.setAttribute("background-image", "url('/assets/images/stars.jpg')");
   }
 
   const questionIcon = document.getElementById("question-icon");
@@ -33,19 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function answerQuestion() {
     openModal();
-    // console.log("hello mateYYYYYYY");
   }
-  ///////////////////////////
-  ///////////////////////////
 
-  //visual stuff//
+  //random visual selector//
   const visualButton = document.querySelector("button");
   visualButton.addEventListener("click", visualSelector);
   let visual;
   function visualSelector() {
     visual = visuals[Math.floor(Math.random() * visuals.length)];
   }
-  //////////////////////
 
   file.onchange = function () {
     /////
@@ -82,13 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (visual === "barVisual") {
         // const barWidth = (WIDTH / bufferLength) * 5;
-        const barWidth = (WIDTH / bufferLength) * 50;
+        const barWidth = (WIDTH / bufferLength) * 40;
         let barHeight;
         let x = 0;
         let r, g, b;
+        //total number of bars per frame
         let bars = 200;
 
-        // const barFftSizes = [256, 512, 2048, 4096, 8192];
+        // const barFftSizes = [512, 2048, 4096];
         const barFftSizes = [2048];
         analyser.fftSize =
           barFftSizes[Math.floor(Math.random() * barFftSizes.length)];
@@ -96,61 +89,77 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < bars; i++) {
           barHeight = dataArray[i] * 2.5;
 
-          if (dataArray[i] > 210) {
-            // pink
+          if (dataArray[i] > 220) {
+            r = getRandomColor();
+            g = getRandomColor();
+            b = getRandomColor();
+          } else if (dataArray[i] > 210) {
+            //hot orange
             r = 255;
-            g = 110;
-            b = 199;
-            // r = getRandomColor();
-            // g = getRandomColor();
-            // b = getRandomColor();
+            g = 115;
+            b = 0;
           } else if (dataArray[i] > 200) {
-            // yellow
-            // r = 250;
-            // g = 237;
-            // b = 39;
-            r = getRandomColor();
-            g = getRandomColor();
-            b = getRandomColor();
+            // hot pink
+            r = 255;
+            g = 105;
+            b = 180;
           } else if (dataArray[i] > 190) {
-            // green
-            r = 57;
-            g = 255;
-            b = 20;
-            // r = getRandomColor();
-            // g = getRandomColor();
-            // b = getRandomColor();
+            // cornflower blue
+            r = 39;
+            g = 58;
+            b = 93;
           } else if (dataArray[i] > 180) {
-            // purple
-            // r = 188;
-            // g = 19;
-            // b = 254;
-            r = getRandomColor();
-            g = getRandomColor();
-            b = getRandomColor();
-            (")");
+            // fluorescent yellow
+            r = 204;
+            g = 255;
+            b = 0;
+          } else if (dataArray[i] > 160) {
+            //bright purple
+            r = 115;
+            g = 0;
+            b = 255;
+            // } else if (dataArray[i] > 150) {
+            //   r = getRandomColor();
+            //   g = getRandomColor();
+            //   b = getRandomColor();
+          } else if (dataArray[i] > 140) {
+            //bright baby blue
+            r = 0;
+            g = 140;
+            b = 255;
+          } else if (dataArray[i] > 120) {
+            //seamoss
+            r = 0;
+            g = 169;
+            b = 137;
+          } else if (dataArray[i] > 80) {
+            // dark neon pink
+            r = 255;
+            g = 0;
+            b = 140;
+          } else if (dataArray[i] > 40) {
+            // neon purple
+            r = 125;
+            g = 18;
+            b = 255;
           } else {
-            // blue
-            // r = 0;
-            // g = 249;
-            // b = 255;
-            r = getRandomColor();
-            g = getRandomColor();
-            b = getRandomColor();
+            // neon green
+            r = 140;
+            g = 255;
+            b = 0;
           }
 
           ctx.fillStyle = `rgb(${r},${g},${b})`;
           ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
+          //spacing between bar
           x += barWidth + 10;
         }
-        // console.log("dis is BARVISUAL", analyser.fftSize);
-        ////
       } else if (visual === "waveVisual") {
+        // const waveFftSizes = [1024];
         const waveFftSizes = [1024];
         analyser.fftSize =
           waveFftSizes[Math.floor(Math.random() * waveFftSizes.length)];
-        ////
         ctx.lineWidth = 2;
         ctx.strokeStyle =
           "rgb(" +
@@ -180,12 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.lineTo(WIDTH, HEIGHT / 2);
         ctx.stroke();
-        // console.log("WAVEVISUALLLL");
-
-        /////
       } else if (visual === "circleVisual") {
-        // console.log("ISSA CIRCLE");
-        /////////////////////////
         if (audio.paused) {
           ctx.fillRect(0, 0, WIDTH, HEIGHT);
         } else {
@@ -241,14 +245,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.closePath();
             ctx.stroke();
             ctx.drawImage(canvas, -8, -8, WIDTH + 16, HEIGHT + 16);
-
-            // requestAnimationFrame(render);
           }
         }
+      } else if (audio.pause) {
+        ctx.fillRect(0, 0, WIDTH, HEIGHT);
       }
     }
 
-    // audio.play();
     renderFrame();
   };
 });
