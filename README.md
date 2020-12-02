@@ -2,7 +2,7 @@
 
 ## Background and Overview
 
-AMBIANCE CATCHER is an interactive audio-visualization app that thats the user on a a one-of-a-kind journey that is based on the song of their choice.  
+AMBIANCE CATCHER is an interactive audio-visualization app that takes the user on a one-of-a-kind journey that is based on the song of their choice.  
 &nbsp;&nbsp;&nbsp;&nbsp;
 ![AMBIANCE CATCHER PREVIEW](/assets/images/ambianceCatcher.gif "AMBIANCE CATCHER PREVIEW")
 
