@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("canvas");
   const h3 = document.getElementById("name");
   const audio = document.getElementById("audio");
-  // const visuals = ["waveVisual", "barVisual", "circleVisual"];
-  const visuals = ["barVisual"];
+  const visuals = ["waveVisual", "barVisual", "circleVisual"];
+  // const visuals = ["barVisual"];
 
   const modalBg = document.querySelector(".modal-background");
   const modal = document.querySelector(".modal-main");
